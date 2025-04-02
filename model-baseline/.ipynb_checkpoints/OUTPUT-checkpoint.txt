@@ -1,0 +1,9 @@
+Loading data/yelp.csv
+
+Logistic Regression (C=1.0) Evaluation:
+Accuracy     : 0.4909
+F1 Macro     : 0.4556
+F1 Micro     : 0.4909
+F1 Weighted  : 0.4902
+
+bow+LR+class_weight='balanced'
