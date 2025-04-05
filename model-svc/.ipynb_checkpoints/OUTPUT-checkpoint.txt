@@ -1,0 +1,51 @@
+模型：bow+SVC+class_weight='balanced'
+
+# bow fit transform
+vectorizer = CountVectorizer(stop_words='english')
+X_train_bow = vectorizer.fit_transform(X_train)
+
+# C
+C_values = [0.001, 0.01, 0.1, 1, 10, 100]
+
+# iterate C
+for c in C_values:
+    model = LinearSVC(C=c, class_weight='balanced', random_state=42, max_iter=50000)
+
+Loading data/yelp.csv
+Data split: Train size 8000, Test size 2000.
+
+Cross-Validation Results for C=0.001 [LinearSVC]:
+Accuracy     : 0.5085
+F1 Macro     : 0.4597
+F1 Micro     : 0.5085
+F1 Weighted  : 0.5001
+
+Cross-Validation Results for C=0.01 [LinearSVC]:
+Accuracy     : 0.5006
+F1 Macro     : 0.4644
+F1 Micro     : 0.5006
+F1 Weighted  : 0.4962
+
+Cross-Validation Results for C=0.1 [LinearSVC]:
+Accuracy     : 0.4759
+F1 Macro     : 0.4337
+F1 Micro     : 0.4759
+F1 Weighted  : 0.4731
+
+Cross-Validation Results for C=1 [LinearSVC]:
+Accuracy     : 0.4477
+F1 Macro     : 0.4058
+F1 Micro     : 0.4477
+F1 Weighted  : 0.4454
+
+Cross-Validation Results for C=10 [LinearSVC]:
+Accuracy     : 0.4335
+F1 Macro     : 0.3873
+F1 Micro     : 0.4335
+F1 Weighted  : 0.4311
+
+Cross-Validation Results for C=100 [LinearSVC]:
+Accuracy     : 0.4263
+F1 Macro     : 0.3799
+F1 Micro     : 0.4263
+F1 Weighted  : 0.4254

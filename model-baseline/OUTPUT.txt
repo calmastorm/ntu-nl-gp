@@ -1,9 +1,17 @@
 Loading data/yelp.csv
+Data split: Train size 8000, Test size 2000.
 
-Logistic Regression (C=1.0) Evaluation:
-Accuracy     : 0.4909
-F1 Macro     : 0.4556
-F1 Micro     : 0.4909
-F1 Weighted  : 0.4902
+Cross-Validation Results (on training set):
+Accuracy     : 0.4860
+F1 Macro     : 0.4517
+F1 Micro     : 0.4860
+F1 Weighted  : 0.4847
 
-bow+LR+class_weight='balanced'
+模型：bow+LR+class_weight='balance'
+
+# bow fit transform
+vectorizer = CountVectorizer(stop_words='english')
+X_train_bow = vectorizer.fit_transform(X_train)
+
+# model
+model = LogisticRegression(C=1.0, max_iter=5000, random_state=42, class_weight='balanced')
