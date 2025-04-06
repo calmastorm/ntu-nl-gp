@@ -1,0 +1,20 @@
+Loading data/yelp.csv
+Data split: Train size 8000, Test size 2000.
+
+Cross-Validation Results (on training set) [GBC]:
+Accuracy     : 0.4700
+F1 Macro     : 0.3540
+F1 Micro     : 0.4700
+F1 Weighted  : 0.4358
+
+# bow fit transform
+vectorizer = CountVectorizer(stop_words='english')
+X_train_bow = vectorizer.fit_transform(X_train)
+
+# model
+model = GradientBoostingClassifier(
+    n_estimators=100,    # 总共100棵小树
+    learning_rate=0.1,   # 每棵树的贡献系数
+    max_depth=3,         # 每棵树的最大深度
+    random_state=42
+    )

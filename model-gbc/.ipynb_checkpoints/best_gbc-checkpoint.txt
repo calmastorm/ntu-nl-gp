@@ -1,0 +1,3 @@
+Loading data/yelp.csv
+Data split: Train size 8000, Test size 2000.
+Fitting 5 folds for each of 8 candidates, totalling 40 fits
