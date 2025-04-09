@@ -1,0 +1,6 @@
+
+Cross-Validation Results (on training set) [GBC+tfidf]:
+Accuracy     : 0.4746
+F1 Macro     : 0.3828
+F1 Micro     : 0.4746
+F1 Weighted  : 0.4514
