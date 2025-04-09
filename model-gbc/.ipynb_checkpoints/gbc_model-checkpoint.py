@@ -26,9 +26,9 @@ def main():
 
     # model
     model = GradientBoostingClassifier(
-        n_estimators=100,    # 总共100棵小树
+        n_estimators=200,    # 总共100棵小树
         learning_rate=0.1,   # 每棵树的贡献系数
-        max_depth=3,         # 每棵树的最大深度
+        max_depth=5,         # 每棵树的最大深度
         random_state=42
     )
 
