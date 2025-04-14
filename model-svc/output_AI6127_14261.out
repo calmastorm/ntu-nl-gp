@@ -1,0 +1,38 @@
+Loading data/yelp.csv
+Data split: Train size 8000, Test size 2000.
+
+Evaluation Results for C=0.001 [LinearSVC]:
+Accuracy     : 0.5240
+F1 Macro     : 0.4726
+F1 Micro     : 0.5240
+F1 Weighted  : 0.5163
+
+Evaluation Results for C=0.01 [LinearSVC]:
+Accuracy     : 0.5120
+F1 Macro     : 0.4667
+F1 Micro     : 0.5120
+F1 Weighted  : 0.5091
+
+Evaluation Results for C=0.1 [LinearSVC]:
+Accuracy     : 0.4970
+F1 Macro     : 0.4529
+F1 Micro     : 0.4970
+F1 Weighted  : 0.4943
+
+Evaluation Results for C=1 [LinearSVC]:
+Accuracy     : 0.4620
+F1 Macro     : 0.4233
+F1 Micro     : 0.4620
+F1 Weighted  : 0.4591
+
+Evaluation Results for C=10 [LinearSVC]:
+Accuracy     : 0.4525
+F1 Macro     : 0.4080
+F1 Micro     : 0.4525
+F1 Weighted  : 0.4491
+
+Evaluation Results for C=100 [LinearSVC]:
+Accuracy     : 0.4310
+F1 Macro     : 0.3787
+F1 Micro     : 0.4310
+F1 Weighted  : 0.4293

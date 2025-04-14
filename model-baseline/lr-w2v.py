@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-from sklearn.model_selection import train_test_split, cross_val_predict
+from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, f1_score
 from gensim.models import Word2Vec
@@ -65,31 +65,24 @@ def main():
     # model
     model = LogisticRegression(C=1.0, max_iter=5000, random_state=42, class_weight='balanced')
 
-    # 5 fold cv
-    print("Running cross-validation...")
-    y_train_pred = cross_val_predict(model, X_train_w2v, y_train, cv=5)
+    # Train on full training set
+    print("Training model on full training set...")
+    model.fit(X_train_w2v, y_train)
 
-    # acc + f1
-    acc = accuracy_score(y_train, y_train_pred)
-    f1_macro = f1_score(y_train, y_train_pred, average='macro')
-    f1_micro = f1_score(y_train, y_train_pred, average='micro')
-    f1_weighted = f1_score(y_train, y_train_pred, average='weighted')
+    # Predict on test set
+    y_test_pred = model.predict(X_test_w2v)
 
-    print("\nCross-Validation Results (Logistic Regression + Word2Vec):")
+    # Calculate metrics
+    acc = accuracy_score(y_test, y_test_pred)
+    f1_macro = f1_score(y_test, y_test_pred, average='macro')
+    f1_micro = f1_score(y_test, y_test_pred, average='micro')
+    f1_weighted = f1_score(y_test, y_test_pred, average='weighted')
+
+    print("\nTest Set Results (Logistic Regression + Word2Vec):")
     print(f"Accuracy     : {acc:.4f}")
     print(f"F1 Macro     : {f1_macro:.4f}")
     print(f"F1 Micro     : {f1_micro:.4f}")
     print(f"F1 Weighted  : {f1_weighted:.4f}")
-
-    # Optional: Train on full training set and evaluate on test set
-    print("\nTraining on full training set and evaluating on test set...")
-    model.fit(X_train_w2v, y_train)
-    y_test_pred = model.predict(X_test_w2v)
-    
-    test_acc = accuracy_score(y_test, y_test_pred)
-    test_f1 = f1_score(y_test, y_test_pred, average='macro')
-    print(f"Test Accuracy: {test_acc:.4f}")
-    print(f"Test F1 Macro: {test_f1:.4f}")
 
 if __name__ == "__main__":
     main()

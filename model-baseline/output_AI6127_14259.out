@@ -1,0 +1,8 @@
+Loading data/yelp.csv
+Data split: Train size 8000, Test size 2000.
+
+Evaluation Results (on test set):
+Accuracy     : 0.4945
+F1 Macro     : 0.4484
+F1 Micro     : 0.4945
+F1 Weighted  : 0.4940

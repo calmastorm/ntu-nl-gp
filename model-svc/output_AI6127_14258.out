@@ -1,0 +1,54 @@
+Loading data/yelp.csv
+Preprocessing text...
+Data split: Train size 8000, Test size 2000
+Training Word2Vec model...
+Converting documents to vectors...
+
+Training and evaluating with C=0.001
+Test Set Results for C=0.001 [LinearSVC with Word2Vec]:
+Accuracy     : 0.4195
+F1 Macro     : 0.2980
+F1 Micro     : 0.4195
+F1 Weighted  : 0.4042
+
+Training and evaluating with C=0.01
+Test Set Results for C=0.01 [LinearSVC with Word2Vec]:
+Accuracy     : 0.4370
+F1 Macro     : 0.3495
+F1 Micro     : 0.4370
+F1 Weighted  : 0.4350
+
+Training and evaluating with C=0.1
+Test Set Results for C=0.1 [LinearSVC with Word2Vec]:
+Accuracy     : 0.4460
+F1 Macro     : 0.3627
+F1 Micro     : 0.4460
+F1 Weighted  : 0.4467
+
+Training and evaluating with C=1
+Test Set Results for C=1 [LinearSVC with Word2Vec]:
+Accuracy     : 0.4515
+F1 Macro     : 0.3778
+F1 Micro     : 0.4515
+F1 Weighted  : 0.4538
+
+Training and evaluating with C=10
+Test Set Results for C=10 [LinearSVC with Word2Vec]:
+Accuracy     : 0.4715
+F1 Macro     : 0.4018
+F1 Micro     : 0.4715
+F1 Weighted  : 0.4744
+
+Training and evaluating with C=100
+Test Set Results for C=100 [LinearSVC with Word2Vec]:
+Accuracy     : 0.4755
+F1 Macro     : 0.4085
+F1 Micro     : 0.4755
+F1 Weighted  : 0.4777
+
+Best performing model:
+C Value      : 100
+Accuracy     : 0.4755
+F1 Macro     : 0.4085
+F1 Micro     : 0.4755
+F1 Weighted  : 0.4777
