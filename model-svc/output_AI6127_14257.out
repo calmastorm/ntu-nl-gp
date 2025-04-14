@@ -1,0 +1,51 @@
+Loading data/yelp.csv
+Data split: Train size 8000, Test size 2000.
+
+Training and evaluating with C=0.001
+Test Set Results for C=0.001 [LinearSVC with TF-IDF]:
+Accuracy     : 0.4695
+F1 Macro     : 0.2210
+F1 Micro     : 0.4695
+F1 Weighted  : 0.3875
+
+Training and evaluating with C=0.01
+Test Set Results for C=0.01 [LinearSVC with TF-IDF]:
+Accuracy     : 0.5285
+F1 Macro     : 0.4519
+F1 Micro     : 0.5285
+F1 Weighted  : 0.5109
+
+Training and evaluating with C=0.1
+Test Set Results for C=0.1 [LinearSVC with TF-IDF]:
+Accuracy     : 0.5285
+F1 Macro     : 0.4869
+F1 Micro     : 0.5285
+F1 Weighted  : 0.5252
+
+Training and evaluating with C=1
+Test Set Results for C=1 [LinearSVC with TF-IDF]:
+Accuracy     : 0.5065
+F1 Macro     : 0.4719
+F1 Micro     : 0.5065
+F1 Weighted  : 0.5054
+
+Training and evaluating with C=10
+Test Set Results for C=10 [LinearSVC with TF-IDF]:
+Accuracy     : 0.4770
+F1 Macro     : 0.4403
+F1 Micro     : 0.4770
+F1 Weighted  : 0.4750
+
+Training and evaluating with C=100
+Test Set Results for C=100 [LinearSVC with TF-IDF]:
+Accuracy     : 0.4555
+F1 Macro     : 0.4178
+F1 Micro     : 0.4555
+F1 Weighted  : 0.4537
+
+Best performing model:
+C Value      : 0.1
+Accuracy     : 0.5285
+F1 Macro     : 0.4869
+F1 Micro     : 0.5285
+F1 Weighted  : 0.5252

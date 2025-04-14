@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-from sklearn.model_selection import train_test_split, cross_val_predict
+from sklearn.model_selection import train_test_split
 from sklearn.svm import LinearSVC
 from sklearn.metrics import accuracy_score, f1_score
 from gensim.models import Word2Vec
@@ -68,26 +68,57 @@ def main():
     # Convert documents to vectors
     print("Converting documents to vectors...")
     X_train_vectors = np.array([document_to_vector(doc, w2v_model) for doc in X_train])
+    X_test_vectors = np.array([document_to_vector(doc, w2v_model) for doc in X_test])
 
     # C values to try
     C_values = [0.001, 0.01, 0.1, 1, 10, 100]
+    results = []
 
-    # iterate C
+    # iterate C values
     for c in C_values:
-        model = LinearSVC(C=c, class_weight='balanced', random_state=42, max_iter=50000)
+        print(f"\nTraining and evaluating with C={c}")
+        
+        # Initialize and train model
+        model = LinearSVC(
+            C=c, 
+            class_weight='balanced', 
+            random_state=42, 
+            max_iter=50000
+        )
+        model.fit(X_train_vectors, y_train)
+        
+        # Predict on test set
+        y_test_pred = model.predict(X_test_vectors)
 
-        y_train_pred = cross_val_predict(model, X_train_vectors, y_train, cv=5)
+        # Calculate metrics
+        acc = accuracy_score(y_test, y_test_pred)
+        f1_macro = f1_score(y_test, y_test_pred, average='macro')
+        f1_micro = f1_score(y_test, y_test_pred, average='micro')
+        f1_weighted = f1_score(y_test, y_test_pred, average='weighted')
 
-        acc = accuracy_score(y_train, y_train_pred)
-        f1_macro = f1_score(y_train, y_train_pred, average='macro')
-        f1_micro = f1_score(y_train, y_train_pred, average='micro')
-        f1_weighted = f1_score(y_train, y_train_pred, average='weighted')
+        # Store results
+        results.append({
+            'C': c,
+            'Accuracy': acc,
+            'F1 Macro': f1_macro,
+            'F1 Micro': f1_micro,
+            'F1 Weighted': f1_weighted
+        })
 
-        print(f"\nCross-Validation Results for C={c} [LinearSVC with Word2Vec]:")
+        print(f"Test Set Results for C={c} [LinearSVC with Word2Vec]:")
         print(f"Accuracy     : {acc:.4f}")
         print(f"F1 Macro     : {f1_macro:.4f}")
         print(f"F1 Micro     : {f1_micro:.4f}")
         print(f"F1 Weighted  : {f1_weighted:.4f}")
+
+    # Find best performing model
+    best_model = max(results, key=lambda x: x['F1 Macro'])
+    print("\nBest performing model:")
+    print(f"C Value      : {best_model['C']}")
+    print(f"Accuracy     : {best_model['Accuracy']:.4f}")
+    print(f"F1 Macro     : {best_model['F1 Macro']:.4f}")
+    print(f"F1 Micro     : {best_model['F1 Micro']:.4f}")
+    print(f"F1 Weighted  : {best_model['F1 Weighted']:.4f}")
 
 if __name__ == "__main__":
     main()

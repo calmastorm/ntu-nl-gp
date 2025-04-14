@@ -1,0 +1,8 @@
+Loading data/yelp.csv
+Data split: Train size 8000, Test size 2000.
+
+Test Set Results (Logistic Regression + TF-IDF):
+Accuracy     : 0.5135
+F1 Macro     : 0.4781
+F1 Micro     : 0.5135
+F1 Weighted  : 0.5149
